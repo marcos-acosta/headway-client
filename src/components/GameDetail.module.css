@@ -1,0 +1,92 @@
+.container {
+  padding: 20px;
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.route {
+  border: 1px solid #ccc;
+}
+
+.routeHeader {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.routeHeader:hover {
+  background: #f5f5f5;
+}
+
+.routeDetails {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: #fafafa;
+}
+
+.tripSection {
+  margin-top: 10px;
+}
+
+.stops {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.stop {
+  padding: 5px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+}
+
+.targetStop {
+  padding: 5px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 12px;
+}
+
+.candidatesSection {
+  margin-top: 10px;
+}
+
+.candidateTrip {
+  padding: 5px;
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.success {
+  color: green;
+  font-size: 14px;
+}
+
+.warning {
+  color: orange;
+  font-size: 14px;
+  margin-bottom: 10px;
+}

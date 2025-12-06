@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.entry {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.rank {
+  font-weight: bold;
+  width: 30px;
+}
+
+.username {
+  flex: 1;
+}
+
+.tokens {
+  font-weight: bold;
+}

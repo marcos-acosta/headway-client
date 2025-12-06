@@ -24,6 +24,11 @@
   flex: 1;
 }
 
+.rebuys {
+  min-width: 80px;
+}
+
 .tokens {
   font-weight: bold;
+  min-width: 100px;
 }

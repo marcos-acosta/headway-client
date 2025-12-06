@@ -36,6 +36,7 @@ export default function Leaderboard() {
           <div key={entry.user_id} className={styles.entry}>
             <div className={styles.rank}>{entry.rank}</div>
             <div className={styles.username}>{entry.username}</div>
+            <div className={styles.rebuys}>{entry.num_rebuys} rebuys</div>
             <div className={styles.tokens}>{entry.num_tokens} tokens</div>
           </div>
         ))}

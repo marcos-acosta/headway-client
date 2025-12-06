@@ -83,7 +83,11 @@ export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailPr
   if (error) return <div>Error: {error}</div>;
   if (!game) return <div>Game not found</div>;
 
-  const routes = game.realtime_routes_data || [];
+  const routes = (game.realtime_routes_data || []).sort((a, b) => {
+    const rankA = a.ranking.rank ?? Infinity;
+    const rankB = b.ranking.rank ?? Infinity;
+    return rankA - rankB;
+  });
 
   const now = new Date();
   const bettingOpen = new Date(game.betting_window_open_timestamp);

@@ -1,3 +1,5 @@
+import { Game, User, Bet, Transaction, LeaderboardEntry } from '@/types/game';
+
 const API_BASE = '/api/proxy';
 
 interface ApiResponse<T> {
@@ -55,22 +57,22 @@ export const api = {
     }),
 
   getCurrentUser: () =>
-    apiRequest<{ user_id: string; username: string; num_tokens: number; num_rebuys: number; local_routes?: string }>('/users/me'),
+    apiRequest<User>('/users/me'),
 
   getGames: (params?: { limit?: number; offset?: number; order?: string }) => {
     const query = new URLSearchParams(params as any).toString();
-    return apiRequest<{ games: any[]; count: number; limit: number; offset: number }>(`/games${query ? `?${query}` : ''}`);
+    return apiRequest<{ games: Game[]; count: number; limit: number; offset: number }>(`/games${query ? `?${query}` : ''}`);
   },
 
   getGameById: (gameId: string) =>
-    apiRequest<any>(`/games/${gameId}`),
+    apiRequest<Game>(`/games/${gameId}`),
 
   getGameBetSummary: (gameId: string) =>
     apiRequest<any>(`/games/${gameId}/bet_summary`),
 
   getUserBets: (params?: { status?: string; game_id?: string; limit?: number; offset?: number; order?: string }) => {
     const query = new URLSearchParams(params as any).toString();
-    return apiRequest<{ bets: any[]; count: number }>(`/users/me/bets${query ? `?${query}` : ''}`);
+    return apiRequest<{ bets: Bet[]; count: number }>(`/users/me/bets${query ? `?${query}` : ''}`);
   },
 
   placeBet: (gameId: string, routeId: string, amount: number) =>
@@ -81,7 +83,7 @@ export const api = {
 
   getUserTransactions: (params?: { limit?: number; offset?: number; order?: string }) => {
     const query = new URLSearchParams(params as any).toString();
-    return apiRequest<{ transactions: any[]; count: number }>(`/users/me/transactions${query ? `?${query}` : ''}`);
+    return apiRequest<{ transactions: Transaction[]; count: number }>(`/users/me/transactions${query ? `?${query}` : ''}`);
   },
 
   rebuy: () =>
@@ -91,6 +93,6 @@ export const api = {
 
   getLeaderboard: (limit?: number) => {
     const query = limit ? `?limit=${limit}` : '';
-    return apiRequest<{ leaderboard: any[]; total_entries: number }>(`/leaderboard${query}`);
+    return apiRequest<{ leaderboard: LeaderboardEntry[]; total_entries: number }>(`/leaderboard${query}`);
   },
 };

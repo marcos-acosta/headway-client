@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { Game, Route, TripData, Stop } from '@/types/game';
 import styles from './GameDetail.module.css';
 
 interface GameDetailProps {
@@ -11,7 +12,7 @@ interface GameDetailProps {
 }
 
 export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailProps) {
-  const [game, setGame] = useState<any>(null);
+  const [game, setGame] = useState<Game | null>(null);
   const [betSummary, setBetSummary] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -107,7 +108,7 @@ export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailPr
 
       <h3>Routes</h3>
       <div className={styles.routes}>
-        {routes.map((route: any) => {
+        {routes.map((route) => {
           const isExpanded = expandedRoutes.has(route.route_id);
           const selectedTrip = route.selected_trip;
 
@@ -136,7 +137,7 @@ export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailPr
 
                       <h5>Stops ({selectedTrip.stops?.length || 0})</h5>
                       <div className={styles.stops}>
-                        {selectedTrip.stops?.map((stop: any) => (
+                        {selectedTrip.stops?.map((stop) => (
                           <div key={stop.stop_id} className={styles.stop}>
                             <div>{stop.stop_name} ({stop.stop_id})</div>
                             <div>Seq: {stop.stop_sequence}</div>
@@ -159,7 +160,7 @@ export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailPr
                   {route.candidate_trips && route.candidate_trips.length > 0 && (
                     <div className={styles.candidatesSection}>
                       <h4>Candidate Trips ({route.candidate_trips.length})</h4>
-                      {route.candidate_trips.map((trip: any) => (
+                      {route.candidate_trips.map((trip) => (
                         <div key={trip.trip_id} className={styles.candidateTrip}>
                           {trip.trip_id_short} - {trip.trip_status}
                         </div>
@@ -189,7 +190,7 @@ export default function GameDetail({ gameId, onBack, onBetPlaced }: GameDetailPr
           disabled={!isBettingOpen}
         >
           <option value="">Select a route</option>
-          {routes.map((route: any) => (
+          {routes.map((route) => (
             <option key={route.route_id} value={route.route_id}>
               Route {route.route_id} - {route.route_status}
             </option>

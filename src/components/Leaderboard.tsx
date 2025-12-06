@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { LeaderboardEntry } from '@/types/game';
 import styles from './Leaderboard.module.css';
 
 export default function Leaderboard() {
-  const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 

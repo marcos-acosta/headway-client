@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '@/lib/api';
+import { User, Bet, Transaction } from '@/types/game';
 import styles from './UserProfile.module.css';
 
 interface UserProfileProps {
@@ -9,9 +10,9 @@ interface UserProfileProps {
 }
 
 export default function UserProfile({ onBalanceUpdate }: UserProfileProps) {
-  const [user, setUser] = useState<any>(null);
-  const [bets, setBets] = useState<any[]>([]);
-  const [transactions, setTransactions] = useState<any[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [bets, setBets] = useState<Bet[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [rebuyLoading, setRebuyLoading] = useState(false);
